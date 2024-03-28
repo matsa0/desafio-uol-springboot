@@ -1,12 +1,12 @@
 package matsa.dev.desafiouolhost.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import matsa.dev.desafiouolhost.exception.PlayerNotFoundException;
 import matsa.dev.desafiouolhost.infra.CodenameHandler;
 import matsa.dev.desafiouolhost.model.GroupType;
 import matsa.dev.desafiouolhost.model.Player;
@@ -45,6 +45,6 @@ public class PlayerService {
     public Player findById(Long id) {
         Optional<Player> player = repository.findById(id);
 
-        return player.orElseThrow(() -> new NoSuchElementException("Player not found with id > " + id));
+        return player.orElseThrow(() -> new PlayerNotFoundException("Player not found in id: " + id));
     }
 }
