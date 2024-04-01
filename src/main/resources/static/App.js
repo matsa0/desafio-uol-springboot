@@ -25,6 +25,11 @@ document.getElementById("register-btn").addEventListener("click", function() {
     register(data)
 })
 
+document.getElementById("show-players-btn").addEventListener("click", function() {
+    document.getElementById("show-players").style.display = "block"
+    showPlayers()
+})
+
 const url = "http://localhost:8080/players"
 function register(data) {
 
@@ -44,7 +49,44 @@ function register(data) {
         console.log(data)
     })
     .catch(error => {
-        console.log(error)
+        console.log("POST ERROR > ", error)
     })
+}
 
+function showPlayers() {
+    fetch(url, {
+        method: "GET",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    })
+    .then(response => {
+        return response.json()
+    })
+    .then(players => {
+        const tableBody = document.querySelector('#show-players tbody') //selecionando o elemento tbody na table de id #show-players(elemento pai)
+
+        tableBody.innerHTML = "" //limpa o tbody toda vez para não haver repetições
+
+        players.forEach(player => {
+            const tableRow = document.createElement("tr") //cria o elemento tr no tbody
+
+            //innerHTML é uma propriedade do DOM que representa o conteúdo HTML do elemento(você pode obter ou modificar o conteúdo com esta propriedade)
+            tableRow.innerHTML = 
+            `
+                <td>${player.name}</td>
+                <td>${player.email}</td>
+                <td>${player.phone}</td>
+                <td>${player.codename}</td>
+                <td>${player.groupType}</td>
+            `
+
+            //adicionando a linha à tabela(elemento filho)
+            tableBody.appendChild(tableRow)
+
+        });
+    })
+    .catch(error => {
+        console.log("GET ERROR > ", error)
+    })
 }
