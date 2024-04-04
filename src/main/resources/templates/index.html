@@ -8,8 +8,8 @@
     <title>Desafio UOL HOST</title>
 </head>
 <body>
-    <div class="container register">
-        <div class="row register-scope">
+    <div class="container ">
+        <div class="row ">
             <div class="col">
                 <form id="register-form">
                     <h2 class="text-center py-4">Cadastro do jogador UOL</h2>
@@ -36,12 +36,15 @@
                         <input class="form-check-input" type="radio" name="groupType" value="justice_league" id="input-jLeague" required>
                         <label class="form-check-label">Liga da Justiça</label>
                     </div>
-    
+                    
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary" id="register-btn" onclick="register()">Cadastrar</button>
-                        <button type="menu" class="btn btn-outline-primary" id="show-players-btn" onclick="showPlayers()">Listar Jogadores</button>
+                        <button type="button" class="btn btn-outline-primary" id="show-players-btn" onclick="showPlayers()">Listar Jogadores</button>
                     </div>
                 </form>
+
+
+                </div>
             </div>
 
             <div id="show-players" class="py-4">
@@ -56,9 +59,10 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        
                     </tbody>
                 </table>
+                <button id="hide-players-btn" class="btn btn-secondary">Esconder</button>
             </div>
         </div>
     </div>

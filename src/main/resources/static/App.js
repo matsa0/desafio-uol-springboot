@@ -26,11 +26,16 @@ document.getElementById("register-btn").addEventListener("click", function() {
 })
 
 document.getElementById("show-players-btn").addEventListener("click", function() {
-    document.getElementById("show-players").style.display = "block"
+    document.getElementById("show-players").style.display = "flex"
     showPlayers()
+
+    document.getElementById("hide-players-btn").addEventListener("click", function() {
+        document.getElementById("show-players").style.display = "none"
+    })
 })
 
 const url = "http://localhost:8080/players"
+
 function register(data) {
 
     //fetch() é uma função que permite fazer requisições de recursos de rede(requisições HTTP em torno de promises)

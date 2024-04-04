@@ -9,4 +9,10 @@ body {
 
 #show-players {
     display: none;
+    flex-direction: column;
 }
+#hide-players-btn {
+    justify-content: center;
+    align-self: center;
+}
+
